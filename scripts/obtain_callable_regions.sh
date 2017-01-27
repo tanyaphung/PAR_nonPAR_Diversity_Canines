@@ -16,4 +16,4 @@ java -Xmx$MEM -jar ${GATK} \
 	--minDepth 10 \
 	--minMappingQuality 30 \
 	-summary ${outDir}/${sampleabb}/${sampleabb}'_table.txt' \
-	-o ${outDir}/${sampleabb}/${sampleabb}'_callable_loci.bed
+	-o ${outDir}/${sampleabb}/${sampleabb}'_callable_loci.bed'
