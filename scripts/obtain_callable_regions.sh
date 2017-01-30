@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#Usage: ./obtain_callable_regions.sh /path/to/GATK /path/to/reference path/to/outputdirectory path/to/bam samplename 
+
 . /u/local/Modules/default/init/modules.sh
 module load java/1.8.0_77
 MEM=4G
