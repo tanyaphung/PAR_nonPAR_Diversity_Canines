@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Usage: ./obtain_GT_for_1_ind_from_VCF.sh $inVCF $outDir $chrNum
+#Usage: ./obtain_GT_for_1_ind_from_VCF.sh /path/to/VCF /path/to/outputdirectory chrNum
 . /u/local/Modules/default/init/modules.sh
 module load vcftools
 
