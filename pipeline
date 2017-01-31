@@ -1,0 +1,51 @@
+PIPELINE
+Contrasting diversity pattern between autosomes, pseudoautosomal regions and nonpseudoautosomal regions of the X chromosome
+
+Pipeline:
+
+I. Process variants (numerator)
+1. 
+What: Single sample variant calling with GATK
+Script: gatk_single_sample.sh
+
+2. 
+What: Merge all of the vcf from 20 individuals into one vcf
+Script: merge_vcfs.sh
+
+3. 
+What: Filter variants: GATK hard filter, remove nonbiallelic variants and clustered SNPs
+Script: filter_vcfs.sh
+
+4. 
+What: Obtain GT for each individual
+Script: obtain_GT_for_1_ind_from_VCF.sh
+
+
+II. Process callable loci (denominator)
+5. 
+What: Use GATK to obtain the callable loci from BAM file
+Script: obtain_callable_loci.sh
+
+6. 
+What: Format callable loci
+Script: format_callable_loci.sh
+
+III. Obtain putatively neutral regions
+
+7. 
+What: Obtain putatively neutral regions by using bedtools
+Script: obtain_neutralReions.sh [NOTE: currently only deal with Ensemble genes and repetitive elements]
+
+8.
+What: For each individual, intersect the callable regions with the putatively neutral regions
+Script: intersect_callableRegions_neutralRegions.sh
+
+IV. Make non-overlapping windows:
+9. 
+What: generate non-overlapping windows
+Script: 
+
+V. Compute per individual heterozygosity
+1.
+What:
+Script: compute_per_individual_het.py
