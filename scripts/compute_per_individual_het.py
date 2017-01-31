@@ -34,7 +34,6 @@ def compute_per_individual_het(window, window_with_total_callable, pos_set, pos_
 						each_site_GT = pos_GT_dict[each_site]
 						print each_site_GT
 						if each_site_GT == '0/1' or each_site_GT == '1/0':
-							print 'yes'
 							total_het += 1
 			return_dict[each_window] = (total_het, window_with_total_callable[each_window], float(total_het)/window_with_total_callable[each_window])	
 		else:
