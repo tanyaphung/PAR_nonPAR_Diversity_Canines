@@ -29,10 +29,45 @@ After GATK Callable Loci script is done, next step is to filter the output file.
 
 >./intersect_callableRegions_6Wolves.sh
 
+#### Obtain callable sites that are neutral for each species
 
+>./intersect_callableRegionsWithinSpecies_neutralRegions.sh
 
 #### Obtain variant sites for each species
 
 * Use VCFtools to subset 13 dog individuals and 6 wolf individuals from the filtered VCF
 
 ./obtain_GT_for_13dogs_from_VCF.sh /path/to/input/directory /path/to/output/directory
+
+#### Compute pairwise diversity
+
+* All scripts associated with computing pairwise diversity can be found in computePi
+
+* The main function is compute_pairwiseDiversity.py. For usage:
+
+>python compute_pairwiseDiversity.py -h
+usage: compute_pairwiseDiversity.py [-h] --windows_bed WINDOWS_BED
+                                    --targets_bed TARGETS_BED --variants
+                                    VARIANTS --numAllele NUMALLELE --outfile
+                                    OUTFILE
+
+This script computes pairwise diversity.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --windows_bed WINDOWS_BED
+                        REQUIRED. BED file for Xkb window.
+  --targets_bed TARGETS_BED
+                        REQUIRED. BED file specifying the regions to be
+                        partitioned into Xkb window. For example, give the
+                        path for the bed file where regions represent neutral
+                        region
+  --variants VARIANTS   REQUIRED. Variant file. The format should be CHROM POS
+                        ind1 ind2 etc. Should be tab delimit. Because of VCF
+                        format, it is 1-based
+  --numAllele NUMALLELE
+                        REQUIRED. Indicate the number of alleles, which is
+                        equal to the number of individuals in your sample
+                        times 2.
+  --outfile OUTFILE     REQUIRED. Name of output file.
+
