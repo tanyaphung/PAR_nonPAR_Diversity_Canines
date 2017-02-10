@@ -18,4 +18,21 @@ After GATK Callable Loci script is done, next step is to filter the output file.
 
 >./format_callable_loci.sh
 
+### Compute pairwise genetic diversity
+#### Obtain callable sites for each species
 
+* Previously when I computed per individual heterozygosity, because it is for each individual, the callable sites are for that particular individuals. 
+* Now in order to compute genetic diversity within 13 dogs and 6 wolves, I need to obtain callable sites within 13 dogs and 6 wolves. 
+* Used bedtools intersect for this. Currently I used bedtools intersect on 2 files, then pipe the output to be intersect with another file. This is extremely inefficient but there are currenly no tools to do this more efficiently that I can find. 
+
+>./intersect_callableRegions_13Dogs.sh
+
+>./intersect_callableRegions_6Wolves.sh
+
+
+
+#### Obtain variant sites for each species
+
+* Use VCFtools to subset 13 dog individuals and 6 wolf individuals from the filtered VCF
+
+./obtain_GT_for_13dogs_from_VCF.sh /path/to/input/directory /path/to/output/directory
