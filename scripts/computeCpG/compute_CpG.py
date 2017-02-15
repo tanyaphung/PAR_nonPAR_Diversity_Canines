@@ -66,7 +66,6 @@ def main():
 		output_list = []
 		for key in sorted(returnDict):
 			output_list.append([key[0], key[1], returnDict[key][0], returnDict[key][1], returnDict[key][2]])
-
 		w = csv.writer(f, delimiter = "\t")
 		w.writerows(output_list)
 
