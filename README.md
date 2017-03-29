@@ -7,7 +7,7 @@ This repository contains scripts related to analyzing genetic diversity in the p
 
 ##### Step 1: Single sample variant calling with GATK
 ```
-./gatk_single_sample.sh
+./gatk_single_sample.sh /path/to/output/directory/ whatChr SampleName /path/to/bam/file/
 ```
 ##### Step 2: Merge all of the VCFs from 20 individuals to one VCF
 ```
