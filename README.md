@@ -8,13 +8,15 @@ When computing heterozygosity, one needs to divide by the total number of callab
  
 Usage:
 
-> ./obtain_callable_regions.sh /path/to/GenomeAnalysisTK.jar /path/to/ref.fa path/to/bam sampleName
-
+```
+./obtain_callable_regions.sh /path/to/GenomeAnalysisTK.jar /path/to/ref.fa path/to/bam sampleName
+```
 Note that this script is intended for obtaining the callable regions for one individual.
 
 After GATK Callable Loci script is done, next step is to filter the output file. Specifically, I will grep out the callable reigons for each chromosome of interest. Then, I will grep out the callable loci (regions that are annotated with CALLABLE). Finally, I will grep out col1, col2, and col3 which are the name of the chromosome, the start coordinate, and the end coordinate. 
-
->./format_callable_loci.sh
+```
+./format_callable_loci.sh
+```
 
 ### Compute pairwise genetic diversity
 #### Obtain callable sites for each species
@@ -22,28 +24,30 @@ After GATK Callable Loci script is done, next step is to filter the output file.
 * Previously when I computed per individual heterozygosity, because it is for each individual, the callable sites are for that particular individuals. 
 * Now in order to compute genetic diversity within 13 dogs and 6 wolves, I need to obtain callable sites within 13 dogs and 6 wolves. 
 * Used bedtools intersect for this. Currently I used bedtools intersect on 2 files, then pipe the output to be intersect with another file. This is extremely inefficient but there are currenly no tools to do this more efficiently that I can find. 
+```
+./intersect_callableRegions_13Dogs.sh
+```
 
->./intersect_callableRegions_13Dogs.sh
-
->./intersect_callableRegions_6Wolves.sh
-
+```
+./intersect_callableRegions_6Wolves.sh
+```
 #### Obtain callable sites that are neutral for each species
-
->./intersect_callableRegionsWithinSpecies_neutralRegions.sh
-
+```
+./intersect_callableRegionsWithinSpecies_neutralRegions.sh
+```
 #### Obtain variant sites for each species
 
 * Use VCFtools to subset 13 dog individuals and 6 wolf individuals from the filtered VCF
-
+```
 ./obtain_GT_for_13dogs_from_VCF.sh /path/to/input/directory /path/to/output/directory
-
+```
 #### Compute pairwise diversity
 
 * All scripts associated with computing pairwise diversity can be found in computePi
 
 * The main function is compute_pairwiseDiversity.py. For usage:
-
->python compute_pairwiseDiversity.py -h
+```
+python compute_pairwiseDiversity.py -h
 usage: compute_pairwiseDiversity.py [-h] --windows_bed WINDOWS_BED
                                     --targets_bed TARGETS_BED --variants
                                     VARIANTS --numAllele NUMALLELE --outfile
@@ -69,3 +73,4 @@ optional arguments:
                         times 2.
   --outfile OUTFILE     REQUIRED. Name of output file.
 
+```
