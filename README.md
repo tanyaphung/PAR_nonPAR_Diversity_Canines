@@ -1,6 +1,27 @@
 # PAR_nonPAR_Diversity_Canines
 This repository contains scripts related to analyzing genetic diversity in the pseudoautosomal regions and non-pseudoautosmal regions of the X chromosome in canines (Phung et al.) (in preparation)
 
+### GATK Variant Calling
+
+* Start out with BAM files that have been aligned (BAM files were obtained from Marsden et al. 2016). Here I will describe how I obtain the VCF files from these BAM files
+
+##### Step 1: Single sample variant calling with GATK
+```
+./gatk_single_sample.sh
+```
+##### Step 2: Merge all of the VCFs from 20 individuals to one VCF
+```
+./merge_vcfs.sh
+```
+##### Filter variants: GATK hard filter, remove nonbiallelic variants and clustered SNPs
+```
+./filter_vcfs.sh
+```
+##### Obtain GT for each individual
+```
+./obtain_GT_for_1_ind_from_VCF.sh
+```
+
 ### Obtain callable loci
 When computing heterozygosity, one needs to divide by the total number of callable sites in that window. In other words, when computing heterozygosity across 50kb nonoverlapping window, if all sites within that windows are callable, heterozygosity per site would be equal to number of heterozygotes divided by 50kb. However, empirical data are typically very messy and so not every site within each window would be callable. These scripts aim to obtain the regions of the genome that are callable. 
 
