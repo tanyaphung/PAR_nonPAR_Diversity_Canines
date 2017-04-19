@@ -61,7 +61,7 @@ def main():
 
 	# Do stuff:
 
-	## compute allele frequency
+	# compute allele frequency
 	variants_AF_dict = computeAF(variants, numAlleles)
 
 	variantsSet = set()
@@ -80,7 +80,7 @@ def main():
 			total_callable = 0
 			for each_site in range(start, end):
 				if each_site in callableSet:
-					total_callable += 0
+					total_callable += 1
 					if each_site in variantsSet:
 						each_BED_AF.append(variants_AF_dict[each_site])
 			pi = computePi(each_BED_AF, numAlleles)
