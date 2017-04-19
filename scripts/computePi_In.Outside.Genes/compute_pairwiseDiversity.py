@@ -84,7 +84,7 @@ def main():
 					if each_site in variantsSet:
 						each_BED_AF.append(variants_AF_dict[each_site])
 			pi = computePi(each_BED_AF, numAlleles)
-			if total_callabe != 0 and pi != 'NA':
+			if total_callable != 0 and pi != 'NA':
 				piPerSite = float(pi)/total_callable ### Need to adjust here for the callable sites
 			else:
 				piPerSite = 'NA'
