@@ -14,6 +14,9 @@ def parse_args():
     		"--BED", required=True,
             help="REQUIRED. BED file specifying the regions to compute pi.")
 	parser.add_argument(
+    		"--callable", required=True,
+            help="REQUIRED. BED file specifying the regions that is callable.")
+	parser.add_argument(
             "--variants", required=True,
             help="REQUIRED. Variant file. The format should be CHROM POS ind1 ind2 etc. Should be tab delimit. Because of VCF format, it is 1-based")
 	parser.add_argument(
@@ -45,6 +48,17 @@ def main():
 						to_append.append(line[i])
 				variants.append(to_append)
 
+	# Make a set of sites that are callable
+	callableSet = set()
+	with open(args.callable, "r") as callable_file:
+		for line in callable_file:
+			line = line.rstrip("\n")
+			line = line.split("\t")
+			start = int(line[1])
+			end = int(line[2])
+			for each_site in range(start, end):
+				callableSet.add(each_site)
+
 	# Do stuff:
 
 	## compute allele frequency
@@ -63,12 +77,15 @@ def main():
 			start = int(line[1])
 			end = int(line[2])
 			each_BED_AF = []
+			total_callable = 0
 			for each_site in range(start, end):
-				if each_site in variantsSet:
-					each_BED_AF.append(variants_AF_dict[each_site])
+				if each_site in callableSet:
+					total_callable += 0
+					if each_site in variantsSet:
+						each_BED_AF.append(variants_AF_dict[each_site])
 			pi = computePi(each_BED_AF, numAlleles)
 			if pi != 'NA':
-				piPerSite = float(pi)/(end - start) ### Need to adjust here for the callable sites
+				piPerSite = float(pi)/total_callable ### Need to adjust here for the callable sites
 			else:
 				piPerSite = 'NA'
 			output = [str(line[0]), str(line[1]), str(line[2]), str(pi), str(piPerSite)]
