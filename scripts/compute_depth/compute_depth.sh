@@ -9,4 +9,4 @@
 . /u/local/Modules/default/init/modules.sh
 module load samtools
 
-samtools depth -b /u/project/klohmuel/tanya_data/Canines_Project_Data/ensembleGenes/canFam4.1_ensembleGenes_chrX_sort.bed /u/project/klohmuel/share_folder/bams_for_diego/canines_bams/Dog/9_libA_ddbox_RKWUCLA_nodupmaptrim.bam
+samtools depth -a /u/project/klohmuel/share_folder/bams_for_diego/canines_bams/Dog/9_libA_ddbox_RKWUCLA_nodupmaptrim.bam
