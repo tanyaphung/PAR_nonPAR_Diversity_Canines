@@ -3,8 +3,8 @@ import os
 import argparse
 import csv
 from make_neutral_loci import *
-from computeAF import *
-from computePi import *
+from compute_AF import *
+from compute_diversity import *
 
 def parse_args():
 	"""
