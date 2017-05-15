@@ -1,15 +1,12 @@
 #!/bin/bash
-#$ -cwd
-#$ -V
-#$ -N intersectW
-#$ -l h_data=4G,time=24:00:00
-#$ -M eplau
-#$ -m ea
+
+# This script obtains the regions that are callable across all 6 wolves individuals
 
 . /u/local/Modules/default/init/modules.sh
 module load bedtools
 
-callableDir='/u/home/p/phung428/nobackup-kirk/tanya_data/callable_regions'
+callableDir=../../results/get_callable
+
 for chrNum in {01..38}
 do
 
