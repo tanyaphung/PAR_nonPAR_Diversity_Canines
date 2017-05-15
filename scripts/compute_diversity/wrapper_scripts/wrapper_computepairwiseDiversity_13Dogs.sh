@@ -20,5 +20,5 @@ variants=../../../results/compute_diversity/genotype_files_for_calc_diversity/ch
 numAllele=26
 out=../../../results/compute_diversity/0kb_flanking/13Dogs/chr${chrNum}_13Dogs_diversity.txt
 
-python compute_pairwiseDiversity.py --windows_bed ${windows} --targets_bed ${targets} --variants ${variants} --numAllele ${numAllele} --outfile ${out}
+python compute_pairwise_diversity.py --windows_bed ${windows} --targets_bed ${targets} --variants ${variants} --numAllele ${numAllele} --outfile ${out}
 done
