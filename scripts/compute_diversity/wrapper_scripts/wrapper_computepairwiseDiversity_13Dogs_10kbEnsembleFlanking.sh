@@ -1,29 +1,24 @@
 #!/bin/bash
-#$ -cwd
-#$ -V
-#$ -N Div13D_10kbFlanking
-#$ -l highp,h_data=8G,time=24:00:00
-#$ -M eplau
-#$ -m ea
 
 #chrX
 chrNum=X
 
-windows=/u/project/klohmuel/tanya_data/Canines_Project_Data/canFam3.1_50kb_nonoverlapping_windows/chr${chrNum}_50kb_windows.bed
-targets=/u/nobackup/kirk/phung428/tanya_data/callable_regions_withinSpecies_in_neutral_regions_10kbFlanking/13Dogs/chr${chrNum}/13Dogs_chr${chrNum}_callableSites_in_neutralRegions.txt
-variants=/u/nobackup/kirk/phung428/tanya_data/genotype_files_for_calc_diversity/chr${chrNum}/13Dogs.GT.FORMAT
+windows=../../../results/make_nonoverlapping_windows/50kb/chr${chrNum}_50kb_windows.bed
+targets=../../../results/get_target/obtain_callable_in_neutral_for_diversity/10kb_flanking/13Dogs/13Dogs_chr${chrNum}_callableSites_in_neutralRegions.txt
+variants=../../../results/compute_diversity/genotype_files_for_calc_diversity/chr${chrNum}/13Dogs.GT.FORMAT
 numAllele=26
-out=/u/home/p/phung428/nobackup-kirk/tanya_data/R_diversity_10kbFlanking/13Dogs/chr${chrNum}_13Dogs_diversity_10kbFlanking.txt
+out=../../../results/compute_diversity/10kb_flanking/13Dogs/chr${chrNum}_13Dogs_diversity_10kbFlanking.txt
 
-python compute_pairwiseDiversity.py --windows_bed ${windows} --targets_bed ${targets} --variants ${variants} --numAllele ${numAllele} --outfile ${out}
+python compute_pairwise_diversity.py --windows_bed ${windows} --targets_bed ${targets} --variants ${variants} --numAllele ${numAllele} --outfile ${out}
 
 for chrNum in {01..38}
 do
-windows=/u/project/klohmuel/tanya_data/Canines_Project_Data/canFam3.1_50kb_nonoverlapping_windows/chr${chrNum}_50kb_windows.bed
-targets=/u/nobackup/kirk/phung428/tanya_data/callable_regions_withinSpecies_in_neutral_regions_10kbFlanking/13Dogs/chr${chrNum}/13Dogs_chr${chrNum}_callableSites_in_neutralRegions.txt
-variants=/u/nobackup/kirk/phung428/tanya_data/genotype_files_for_calc_diversity/chr${chrNum}/13Dogs.GT.FORMAT
+windows=../../../results/make_nonoverlapping_windows/50kb/chr${chrNum}_50kb_windows.bed
+targets=../../../results/get_target/obtain_callable_in_neutral_for_diversity/10kb_flanking/13Dogs/13Dogs_chr${chrNum}_callableSites_in_neutralRegions.txt
+variants=../../../results/compute_diversity/genotype_files_for_calc_diversity/chr${chrNum}/13Dogs.GT.FORMAT
 numAllele=26
-out=/u/home/p/phung428/nobackup-kirk/tanya_data/R_diversity_10kbFlanking/13Dogs/chr${chrNum}_13Dogs_diversity_10kbFlanking.txt
+out=../../../results/compute_diversity/10kb_flanking/13Dogs/chr${chrNum}_13Dogs_diversity_10kbFlanking.txt
 
-python compute_pairwiseDiversity.py --windows_bed ${windows} --targets_bed ${targets} --variants ${variants} --numAllele ${numAllele} --outfile ${out}
+python compute_pairwise_diversity.py --windows_bed ${windows} --targets_bed ${targets} --variants ${variants} --numAllele ${numAllele} --outfile ${out}
+
 done
