@@ -1,10 +1,4 @@
 #!/bin/bash
-#$ -cwd
-#$ -V
-#$ -N GT
-#$ -l h_data=4G,time=24:00:00
-#$ -M phung428
-#$ -m ea
 
 . /u/local/Modules/default/init/modules.sh
 module load vcftools
