@@ -12,8 +12,8 @@ length=$1
 lengthFileName=$2
 for chrNum in {01..38}
 do
-bedtools makewindows -g /u/home/p/phung428/tanya_data_storage/Canines_Project_Data/chrLength/chr${chrNum}.g -w ${length} > /u/home/p/phung428/tanya_data_storage/Canines_Project_Data/canFam3.1_${lengthFileName}_nonoverlapping_windows/chr${chrNum}_${lengthFileName}_windows.bed
+bedtools makewindows -g ../../data/chrLength/chr${chrNum}.g -w ${length} > ../../results/make_nonoverlapping_windows/${lengthFileName}/chr${chrNum}_${lengthFileName}_windows.bed
 done
 
 chrNum=X
-bedtools makewindows -g /u/home/p/phung428/tanya_data_storage/Canines_Project_Data/chrLength/chr${chrNum}.g -w ${length} > /u/home/p/phung428/tanya_data_storage/Canines_Project_Data/canFam3.1_${lengthFileName}_nonoverlapping_windows/chr${chrNum}_${lengthFileName}_windows.bed
+bedtools makewindows -g ../../data/chrLength/chr${chrNum}.g -w ${length} > ../../results/make_nonoverlapping_windows/${lengthFileName}/chr${chrNum}_${lengthFileName}_windows.bed
